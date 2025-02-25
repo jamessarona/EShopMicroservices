@@ -1,4 +1,3 @@
-
 services:
   catalogdb:
     image: postgres
