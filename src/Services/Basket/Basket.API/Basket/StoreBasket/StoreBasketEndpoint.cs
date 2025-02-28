@@ -1,9 +1,9 @@
 ﻿namespace Basket.API.Basket.StoreBasket;
 
 public record StoreBasketRequest(ShoppingCart Cart);
-
 public record StoreBasketResponse(string UserName);
-public class StoreBasketEndpoint : ICarterModule
+
+public class StoreBasketEndpoints : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
@@ -18,7 +18,7 @@ public class StoreBasketEndpoint : ICarterModule
             return Results.Created($"/basket/{response.UserName}", response);
         })
         .WithName("CreateProduct")
-        .Produces<GetBasketResponse>(StatusCodes.Status201Created)
+        .Produces<StoreBasketResponse>(StatusCodes.Status201Created)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .WithSummary("Create Product")
         .WithDescription("Create Product");
