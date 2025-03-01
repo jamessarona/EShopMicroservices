@@ -3,7 +3,8 @@ using System.Text.Json;
 
 namespace Basket.API.Data;
 
-public class CacheBasketRepository(IBasketRepository repository, IDistributedCache cache)
+public class CacheBasketRepository
+    (IBasketRepository repository, IDistributedCache cache)
     : IBasketRepository
 {
     public async Task<ShoppingCart> GetBasket(string userName, CancellationToken cancellationToken = default)
