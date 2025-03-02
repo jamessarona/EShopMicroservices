@@ -398,6 +398,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-/src/Services/Discount/Discount.Grpc/Migrations/20250302085141_InitialCreate.cs
-/src/Services/Discount/Discount.Grpc/Migrations/20250302085141_InitialCreate.Designer.cs
-/src/Services/Discount/Discount.Grpc/Migrations/DiscountContextModelSnapshot.cs
+/src/Services/Discount/Discount.Grpc/discountdb-shm
+/src/Services/Discount/Discount.Grpc/discountdb-wal

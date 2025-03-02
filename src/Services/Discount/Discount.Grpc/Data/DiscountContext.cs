@@ -1,8 +1,10 @@
 ﻿using Discount.Grpc.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Discount.Grpc.Data;
 
+// Run: Add-Migration InitialCreate
 public class DiscountContext : DbContext
 {
     public DbSet<Coupon> Coupons { get; set; } = default!;
