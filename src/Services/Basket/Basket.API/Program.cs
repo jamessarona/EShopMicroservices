@@ -33,7 +33,7 @@ builder.Services.AddStackExchangeRedisCache(options =>
 // Grpc Services
 builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options =>
 {
-options.Address = new Uri(builder.Configuration["GrpcConfigs:DiscountUrl"]!);
+    options.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
 });
 
 // Cross-Cutting Serives
