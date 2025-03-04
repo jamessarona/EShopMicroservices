@@ -1,6 +1,6 @@
 ﻿namespace Ordering.Domain.Models;
 
-class Order : Aggregate<OrderId>
+public class Order : Aggregate<OrderId>
 {
     private readonly List<OrderItems> _orderItems = new();
     public IReadOnlyList<OrderItems> OrderItems => _orderItems.AsReadOnly();
