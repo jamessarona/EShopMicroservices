@@ -20,7 +20,7 @@ public static class DatabaseExtensions
     {
         await SeedCustomerAsync(context);
         await SeedProductAsync(context);
-        await SeedOrderandItemsAsync(context);
+        await SeedOrderWithItemsAsync(context);
     }
 
     private static async Task SeedCustomerAsync(ApplicationDbContext context)
@@ -41,7 +41,7 @@ public static class DatabaseExtensions
         }
     }
 
-    private static async Task SeedOrderandItemsAsync(ApplicationDbContext context)
+    private static async Task SeedOrderWithItemsAsync(ApplicationDbContext context)
     {
         if (!await context.Orders.AnyAsync())
         {
