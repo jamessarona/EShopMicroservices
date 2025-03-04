@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
-using Ordering.Domain.Abstractions;
+﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Ordering.Infrastructure.Data.Interceptors;
 
@@ -29,11 +29,20 @@ class AuditableEntityInterceptors : SaveChangesInterceptor
                 entry.Entity.CreatedAt = DateTime.UtcNow;
             }
 
-            //if (entry.State == EntityState.Added || entry.State == EntityState.Modified || entry.HasChangedOwnedEntities())
-            //{
-            //    entry.Entity.LastModifiedBy = "james";
-            //    entry.Entity.LastModified = DateTime.UtcNow;
-            //}
+            if (entry.State == EntityState.Added || entry.State == EntityState.Modified || entry.HasChangedOwnedEntities())
+            {
+                entry.Entity.LastModifiedBy = "james";
+                entry.Entity.LastModified = DateTime.UtcNow;
+            }
         }
     }
+}
+
+public static class Extensions
+{
+    public static bool HasChangedOwnedEntities(this EntityEntry entry) =>
+        entry.References.Any(r =>
+            r.TargetEntry != null &&
+            r.TargetEntry.Metadata.IsOwned() &&
+            (r.TargetEntry.State == EntityState.Added || r.TargetEntry.State == EntityState.Modified));
 }
