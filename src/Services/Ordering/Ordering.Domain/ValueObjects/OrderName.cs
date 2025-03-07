@@ -8,7 +8,7 @@ public record OrderName
     public static OrderName Of(string value)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(value);
-        ArgumentOutOfRangeException.ThrowIfNotEqual(value.Length, DefaultLenth);
+        //ArgumentOutOfRangeException.ThrowIfNotEqual(value.Length, DefaultLenth);
 
         return new OrderName(value);
     }
