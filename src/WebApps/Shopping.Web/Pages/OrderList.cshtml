@@ -48,7 +48,7 @@
                                 <td>@order.ShippingAddress.AddressLine</td>
                                 <td>@order.Payment.CardName</td>
                                 <td>@order.Status</td>
-                                <td class="text-right">@order.TotalPrice $</td>
+                                <td class="text-right">@order.OrderItems.Sum(x => x.Price * x.Quantity) $</td>
                             </tr>
                         }
                     </tbody>
